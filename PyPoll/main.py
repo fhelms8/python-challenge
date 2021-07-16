@@ -1,5 +1,3 @@
-print("PyPoll Homework")
-
 #Election Results/ PyPoll
 import os
 import csv
