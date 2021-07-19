@@ -1,27 +1,72 @@
-#Election Results/ PyPoll
-import os
+#PyPoll
 import csv
 
-#Set path for file 
-csvpath = os.path.join("..", "Resources", "election_data.csv")
-file_to_analyze = "C:/Users/User/python-challenge/PyPoll/electiondata.csv"
-file_to_output = "C:/Users/User/python-challenge/PyPoll/Analysis2.txt"
+#Set Variables
+tot_votes= 0
+candidate = []
+perc_votes = 0.0
+candidates_votes = {}
+candidate_perc = {}
+winner = 0
+result = ""
 
-with open(csvpath) as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=",")
-    csv_header = next(csvreader)
+# #Open the CSV File
+with open("Resources/election_data.csv", 'r') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ",")
 
-#Total number of votes cast
-tot_votes = []
-#Complete list of candidates who received votes
-candidates = []
+    header = next(csvreader)
 
-#The percentage of votes each candidate won
-perc_votes = []
-#Total number of votes each candidate won
-num_candidate_won = 0
-#Winner of the election based on popular vote
-winner = []
+    for row in csvreader:
+        
+        # Add Total number of votes
+        tot_votes = tot_votes + 1
+        
+        #Add list of candidates
+        candidate = row[2]
 
-for row in csvreader:
-    tot_votes += 1
+        #Calculate votes per candidate 
+        if candidate in candidates_votes:
+            candidates_votes[candidate] = candidates_votes[candidate] + 1 
+        else:
+            candidates_votes[candidate] = 1
+        print(candidates_votes)
+        
+        #Percentage format {:%}
+        def percent(x):
+            num = x/tot_votes
+            percentage = "{:.2%}".format(num)
+            print(percentage)
+
+        
+
+    
+    #     prev_mon_PL = int(row[1])
+
+    #     #Greatest increase in prof (date and amount)
+    #     if increase_prof[1] < int(row[1]):
+    #         increase_prof[0] = row[0]
+    #         increase_prof[1] = int(row[1])
+
+    #     #The greatest decrease in profile (date and amount)
+    #     if decrease_prof[1] > int(row[1]):
+    #         decrease_prof[0] = row[0]
+    #         decrease_prof[1] = int(row[1])
+
+        
+    # result.append('Election Results')
+    # result.append('--------------------')
+    # result.append(f'Total Votes: {tot_votes}')
+    # result.append('--------------------')
+    # result.append(f'candidates_votes: $ {tot_PL}')
+    # result.append(f'Average Change: $ {round(statistics.mean(ch_PL),2)}')
+    # result.append(f'Greatest Increase PL:  {increase_prof[0]}, $ {increase_prof[1]} ')
+    # result.append(f'Greatest Decrease PL:  {decrease_prof[0]}, $ {decrease_prof[1]} ')
+    
+    #Printing to Python console
+    for item in result:
+        print(item)
+   
+    # #Print results to Anaylsis txt: 
+    # with open("Analysis/results.txt", 'w') as text_file:
+    #     for item in result:
+    #         text_file.write(item + "\n")
