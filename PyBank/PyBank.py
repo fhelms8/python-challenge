@@ -18,7 +18,7 @@ with open("Resources/budget_data.csv", 'r') as csvfile:
     header = next(csvreader)
 
     for row in csvreader:
-        # print(row)
+        
         # Add Total number of months
         tot_months = tot_months + 1
 
