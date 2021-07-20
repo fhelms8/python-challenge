@@ -59,7 +59,7 @@ with open("Resources/election_data.csv", 'r') as csvfile:
        Winner = "Li"
     
     
-#Print functions
+#Print functions to Python
     print("Election Results")
     print('-----------------')
     print(f'Total Votes: {tot_votes}')
@@ -70,8 +70,16 @@ with open("Resources/election_data.csv", 'r') as csvfile:
     print(f"O'Tooley: {Tooley_percentage}% ({Tooley})")
     print(f'Winner: {Winner}')
 
-   
-    #Print results to Anaylsis via txt: 
-    with open("Analysis/results.txt", 'w') as text_file:
-        for item in result:
-            text_file.write(item + "\n")
+
+#Print functions to text
+with open("Analysis/results.txt", "w") as text_file:
+    print("Election Results", file=text_file)
+    print('-----------------', file=text_file)
+    print(f'Total Votes: {tot_votes}', file=text_file)
+    print('------------------', file=text_file)
+    print(f"Khan: {Khan_percentage}% ({Khan})", file=text_file)
+    print(f"Correy: {Correy_percentage}% ({Correy})", file=text_file)
+    print(f"Li: {Li_percentage}% ({Li})", file=text_file)
+    print(f"O'Tooley: {Tooley_percentage}% ({Tooley})", file=text_file)
+    print(f'Winner: {Winner}', file=text_file)
+
