@@ -14,8 +14,6 @@ with open("Resources/election_data.csv", 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ",")
 
 # # #Open the CSV File
-# with open("Resources/election_data.csv", 'r') as csvfile:
-#     csvreader = csv.reader(csvfile, delimiter = ",")
 
     header = next(csvreader)
 
@@ -38,7 +36,7 @@ with open("Resources/election_data.csv", 'r') as csvfile:
     Li = (candidate_choices.count)("Li")
     
 
-    #Set percentage functions
+    #Set percentage functions 
     Tooley_percentage = (Tooley/tot_votes) * 100
     Khan_percentage = (Khan/tot_votes) * 100
     Correy_percentage = (Correy/tot_votes) * 100
@@ -50,7 +48,7 @@ with open("Resources/election_data.csv", 'r') as csvfile:
     Li_percentage = "{0:.2f}%".format(Li_percentage)
 
 
-    #Calcuate winner 
+    #Calcuate winner function
     if Tooley > Khan > Correy > Li:
        Winner = "O'Tooley"
     elif Khan > Correy > Li > Tooley:
@@ -61,7 +59,7 @@ with open("Resources/election_data.csv", 'r') as csvfile:
        Winner = "Li"
     
     
-
+#Print functions
     print("Election Results")
     print('-----------------')
     print(f'Total Votes: {tot_votes}')
@@ -71,12 +69,9 @@ with open("Resources/election_data.csv", 'r') as csvfile:
     print(f"Li: {Li_percentage}% ({Li})")
     print(f"O'Tooley: {Tooley_percentage}% ({Tooley})")
     print(f'Winner: {Winner}')
-    
-    #Printing to Python console
-    for item in result:
-        print(item)
+
    
-    #Print results to Anaylsis txt: 
+    #Print results to Anaylsis via txt: 
     with open("Analysis/results.txt", 'w') as text_file:
         for item in result:
             text_file.write(item + "\n")
